@@ -16,3 +16,5 @@ router.get('/customer', function(req, res, next){
         customer: 'just me'
     })
 })
+
+module.exports = router;
