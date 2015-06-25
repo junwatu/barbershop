@@ -45,7 +45,22 @@ describe('/api/customer', function() {
 					done();
 				}	
 			})
-	})
+	});
+	
+	it('should get all customer GET /api/customer', function(done){
+		request(app)
+		    .get('/api/customer')
+	        .set('Content-Type', 'application/json')
+	        .set('Accept', 'application/json')
+	        .expect('Content-Type', /json/)
+			.expect(200, function(err, res){
+			    if(err) {
+					done(err);
+				} else {
+					done();
+				}	
+			})
+	});
 	
 	
 });
