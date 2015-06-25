@@ -13,10 +13,10 @@ db.on('error', function (err) {
 
 // Customer Schema
 var CustomerSchema = new mongoose.Schema({
-        name: 'string',
-        email: 'string',
-        createdAt: 'date',
-        updatedAt: 'date'
+        //unique_id: Number,
+        name: String,
+        email: String,
+        barber: String
     });
 
 module.exports = db.model('Customer', CustomerSchema);
