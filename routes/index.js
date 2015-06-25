@@ -23,15 +23,22 @@ router.post('/customer',function(req, res){
         if (err) {
             res.send({error:err});
         }else {
-            console.log('Save data: ' + data);
-            res.json({status: 'ok'});
+            res.json(data);
         }
     })
 });
 
 router.get('/customer/:customerId', function(req, res){
-    res.json({
-        ops: 'get customer by id'
+    var id = req.params.customerId;
+
+    Customer.find({_id:id}, function(err, data){
+        if(err) {
+            res.json({error:err});
+        }else {
+            res.json({
+                customer: data
+            });
+        }
     })
 });
 
