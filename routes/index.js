@@ -1,20 +1,28 @@
 var express = require('express');
 var router = express.Router();
+var Customer = require('../models/customer.js');
 
-router.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type')
-     
-    ('OPTIONS' == req.method) ? res.send(200) : next();
-    
-});
-
-
-router.get('/customer', function(req, res, next){
-    res.json({
-        customer: 'just me'
+router.get('/customers', function(req, res){
+   Customer.find(function (err, data) {
+        if (err) {
+            res.json({error: err})
+        } else {
+            res.json({customers: data}); 
+        };
     })
 })
+
+router.post('/customers',function(res, res){
+    res.json({
+        ops: 'add new customer'
+    })
+})
+
+router.get('/customers/:customer-id', function(req, res){
+    res.json({
+        ops: 'get customer by id'
+    })
+})
+
 
 module.exports = router;
