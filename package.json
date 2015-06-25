@@ -4,7 +4,8 @@
   "description": "barbershop rest api",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "mocha --timeout 15000 --recursive"
   },
   "author": "Equan Pr.",
   "license": "MIT",
@@ -12,5 +13,10 @@
     "body-parser": "^1.13.1",
     "express": "^4.13.0",
     "mongoose": "^4.0.6"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "should": "^7.0.1",
+    "supertest": "^1.0.1"
   }
 }
