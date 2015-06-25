@@ -4,7 +4,7 @@ var MONGODB_URI = process.env.MONGOLAB_URI || 'mongodb://localhost/barbershop';
 var db = mongoose.createConnection(MONGODB_URI);
 
 db.on('connected', function () {
-    console.log('Connected to MongoDB.');
+    //console.log('Connected to MongoDB.');
 });
 
 db.on('error', function (err) {
