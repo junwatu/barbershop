@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Customer = require('../models/customer.js');
 
-router.get('/customers', function(req, res){
+router.get('/customer', function(req, res){
    Customer.find(function (err, data) {
         if (err) {
             res.json({error: err})
@@ -10,19 +10,29 @@ router.get('/customers', function(req, res){
             res.json({customers: data}); 
         };
     })
-})
+});
 
-router.post('/customers',function(res, res){
-    res.json({
-        ops: 'add new customer'
+router.post('/customer',function(req, res){
+    var customer = new Customer({
+        name: req.body.name,
+        email: req.body.email,
+        barber: req.body.barber
+    });
+
+    customer.save(function (err, data) {
+        if (err) {
+            res.send({error:err});
+        }else {
+            console.log('Save data: ' + data);
+            res.json({status: 'ok'});
+        }
     })
-})
+});
 
-router.get('/customers/:customer-id', function(req, res){
+router.get('/customer/:customerId', function(req, res){
     res.json({
         ops: 'get customer by id'
     })
-})
-
+});
 
 module.exports = router;
