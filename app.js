@@ -1,8 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var app = express();
 var info = require('./package.json');
 var routes = require('./routes');
+
+var app = module.exports = express();
 
 var port = 3113;
 
